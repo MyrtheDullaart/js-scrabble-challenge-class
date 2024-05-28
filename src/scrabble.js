@@ -42,7 +42,7 @@ class Scrabble {
   }
 
   splitWords() {
-    if (this.valid) {
+    if (this.valid && this.word[0] !== '{' && this.word[0] !== '[') {
       let word = this.word.toUpperCase()
 
       if (word.includes('{') && word.includes('}')) {
@@ -58,6 +58,14 @@ class Scrabble {
       }
 
       return word
+    } else if (
+      (this.valid && this.word[0] === '{') ||
+      (this.valid && this.word[0] === '[')
+    ) {
+      const word = ''
+      return word
+    } else {
+      return this.word
     }
   }
 
@@ -68,14 +76,14 @@ class Scrabble {
 
       if (word.includes('{') && word.includes('}')) {
         const re = /[^{]+(?=\})/g
-        const found = word.match(re)
+        const found = word.match(re).toString()
 
         for (const letter of found) {
           total += this.values[letter] * 2
         }
       } else if (word.includes('[') && word.includes(']')) {
         const re = /(?<=\[).+?(?=\])/g
-        const found = word.match(re)
+        const found = word.match(re).toString()
 
         for (const letter of found) {
           total += this.values[letter] * 3

@@ -63,4 +63,16 @@ describe("Scrabble", function() {
 
     expect(scrabble.score()).toEqual(7)
   })
+
+  it('returns 10 for double word score', () => {
+    scrabble = new Scrabble('{dog}')
+
+    expect(scrabble.score()).toEqual(10)
+  })
+
+  it('returns 15 for triple word score', () => {
+    scrabble = new Scrabble('[dog]')
+
+    expect(scrabble.score()).toEqual(15)
+  })
 })
