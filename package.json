@@ -4,7 +4,7 @@
   "description": "A practice exercise",
   "main": "index.js",
   "scripts": {
-    "test": "jasmine",
+    "test": "npx eslint src && npx jasmine",
     "prepare": "husky install"
   },
   "author": "dearshrewdwit@gmail.com",
